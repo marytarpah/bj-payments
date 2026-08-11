@@ -36,16 +36,52 @@ const BUDGET_STEP = 500;
 
 const UNSURE_ID = "unsure";
 
-function estimateRange(tier: Tier, addonsCount: number, priority: Priority): [number, number] {
-  let low = tier === "Premium" ? 3200 : 1800;
-  let high = tier === "Premium" ? 4800 : 2800;
-  low += addonsCount * 300;
-  high += addonsCount * 500;
-  if (priority === "express") {
-    low += 200;
-    high += 500;
+// Approximate ranges per jurisdiction — actual quotes vary by add-ons and
+// individual circumstances, confirmed 1:1 on WhatsApp.
+const JURISDICTION_RANGES: Record<string, [number, number]> = {
+  "hong-kong": [3500, 5000],
+  "us-llc": [1500, 2500],
+  panama: [2000, 3000],
+  "united-kingdom": [2000, 3500],
+};
+
+// Blended fallback while the visitor hasn't picked a jurisdiction yet.
+const UNSURE_RANGE: [number, number] = [1500, 5000];
+
+function estimateRange(
+  jurisdictionId: string,
+  isUnsure: boolean,
+  tier: Tier,
+  addonsCount: number,
+  priority: Priority
+): [number, number] {
+  const [baseLow, baseHigh] = isUnsure
+    ? UNSURE_RANGE
+    : JURISDICTION_RANGES[jurisdictionId] ?? UNSURE_RANGE;
+  const span = baseHigh - baseLow;
+
+  let low = baseLow;
+  let high = baseHigh;
+
+  if (tier === "Basic") {
+    // Basic sits in the lower part of the range; standalone add-ons nudge it up.
+    high = baseLow + span * 0.6;
+    low += addonsCount * span * 0.12;
+    high += addonsCount * span * 0.12;
+  } else {
+    // Premium already bundles both add-ons and sits in the upper part of the range.
+    low = baseLow + span * 0.4;
   }
-  return [low, high];
+
+  if (priority === "express") {
+    low += span * 0.08;
+    high += span * 0.08;
+  }
+
+  low = Math.min(low, baseHigh);
+  high = Math.min(high, baseHigh);
+
+  return [Math.round(low / 50) * 50, Math.round(high / 50) * 50];
 }
 
 export function EstimateConfigurator() {
@@ -65,7 +101,13 @@ export function EstimateConfigurator() {
   const addonsCount = addonsIncluded
     ? 0
     : (addons.nominee ? 1 : 0) + (addons.paypalManager ? 1 : 0);
-  const [rangeLow, rangeHigh] = estimateRange(tier, addonsCount, priority);
+  const [rangeLow, rangeHigh] = estimateRange(
+    jurisdictionId,
+    isUnsure,
+    tier,
+    addonsCount,
+    priority
+  );
 
   const message = useMemo(() => {
     const lines = [
@@ -363,7 +405,8 @@ export function EstimateConfigurator() {
                     €{rangeLow.toLocaleString("en-US")} – €{rangeHigh.toLocaleString("en-US")}
                   </p>
                   <p className="mt-1 text-xs text-muted">
-                    Rough estimate only — varies by jurisdiction. We&apos;ll
+                    Rough estimate only — actual pricing can vary depending
+                    on your personal situation and request. We&apos;ll
                     confirm your exact quote on WhatsApp.
                   </p>
                 </div>
