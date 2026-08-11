@@ -226,6 +226,10 @@ export function PricingTiers() {
             No hidden add-on fees per KYC — the price you see is the price
             you pay.
           </p>
+          <p className="mt-2 inline-flex items-center gap-1.5 text-xs font-medium text-emerald-400">
+            💰 Money-Back Guarantee — report any issue within 3 days of
+            receiving your documents or bank details.
+          </p>
         </Reveal>
       </div>
     </section>

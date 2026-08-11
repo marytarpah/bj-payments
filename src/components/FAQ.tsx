@@ -47,6 +47,10 @@ const FAQS = [
     q: "Is this legal and compliant?",
     a: "Yes. Forming a company and opening a business bank account or payment provider account through a licensed institution is a standard, legal business practice used by companies worldwide. We only work with properly regulated banks and payment providers and follow their KYC/AML requirements throughout the process.",
   },
+  {
+    q: "Do you offer a money-back guarantee?",
+    a: "Yes. If there's a problem with your setup, report it within 3 days of receiving your company documents, or within 3 days of receiving your bank account details, and we'll refund your payment.",
+  },
 ];
 
 const faqJsonLd = {

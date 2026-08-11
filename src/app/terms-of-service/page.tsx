@@ -59,9 +59,15 @@ export default function TermsOfServicePage() {
           Fees are quoted individually based on your chosen jurisdiction, package,
           and add-ons, and are confirmed with you via WhatsApp before work begins.
           Pricing examples shown on this website are indicative and may vary
-          depending on your specific circumstances. Payment terms, including any
-          refund eligibility, will be communicated to you individually and
-          confirmed before services start.
+          depending on your specific circumstances. Payment terms will be
+          communicated to you individually and confirmed before services start.
+        </p>
+        <p>
+          <strong className="text-foreground/90">Money-Back Guarantee.</strong> If
+          you report a problem with your setup within 3 days of receiving your
+          company documents, or within 3 days of receiving your bank account
+          details, we will refund your payment. Outside of this window, refund
+          eligibility will be assessed individually.
         </p>
       </LegalSection>
 
