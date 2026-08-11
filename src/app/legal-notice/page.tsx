@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Legal Notice",
   description:
     "Legal notice and company information for B&J Payments, operated by Ben & Jerome Limited, Hong Kong SAR.",
+  alternates: { canonical: "/legal-notice" },
 };
 
 export default function LegalNoticePage() {

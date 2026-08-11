@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { AmbientBackground } from "@/components/ui/AmbientBackground";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
-import { COMPANY, SITE_NAME, SITE_URL } from "@/lib/config";
+import { COMPANY, SITE_NAME, SITE_URL, WHATSAPP_LINK } from "@/lib/config";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -26,6 +26,20 @@ export const metadata: Metadata = {
     template: `%s — ${SITE_NAME}`,
   },
   description: DESCRIPTION,
+  keywords: [
+    "offshore company formation",
+    "Hong Kong company formation",
+    "nominee director",
+    "nominee shareholder",
+    "business bank account",
+    "PayPal business account",
+    "high-risk payment processing",
+    "e-commerce company setup",
+    "dropshipping company formation",
+  ],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
@@ -48,11 +62,21 @@ const organizationJsonLd = {
   alternateName: SITE_NAME,
   url: SITE_URL,
   logo: `${SITE_URL}/logo-full.png`,
+  image: `${SITE_URL}/opengraph-image.png`,
+  description: DESCRIPTION,
   address: {
     "@type": "PostalAddress",
     streetAddress: COMPANY.registeredOffice,
     addressCountry: "HK",
   },
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer service",
+    telephone: "+1-772-722-8152",
+    url: WHATSAPP_LINK,
+    availableLanguage: ["English"],
+  },
+  areaServed: ["HK", "US", "PA", "GB"],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

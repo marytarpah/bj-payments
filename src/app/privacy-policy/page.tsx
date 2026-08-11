@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
     "How B&J Payments (Ben & Jerome Limited) collects, uses, and protects your personal data, in line with Hong Kong's Personal Data (Privacy) Ordinance.",
+  alternates: { canonical: "/privacy-policy" },
 };
 
 export default function PrivacyPolicyPage() {

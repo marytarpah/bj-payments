@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Terms of Service",
   description:
     "Terms of Service for B&J Payments, operated by Ben & Jerome Limited, Hong Kong SAR.",
+  alternates: { canonical: "/terms-of-service" },
 };
 
 export default function TermsOfServicePage() {
