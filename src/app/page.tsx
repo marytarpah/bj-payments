@@ -23,9 +23,9 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <TrustBar />
-        <ImpactStats />
         <ProblemSection />
         <ComparisonTable />
+        <ImpactStats />
         <SmartStrategySection />
         <SetupTimeline />
         <PricingTiers />
