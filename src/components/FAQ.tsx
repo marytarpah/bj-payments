@@ -31,6 +31,22 @@ const FAQS = [
     q: "Which jurisdiction is best for me as an e-commerce/dropshipping business owner?",
     a: "It depends on your business model, target market, and priorities (taxes, privacy, payment access). Our account manager will advise you individually so you choose the structure that best fits your setup.",
   },
+  {
+    q: "What payment methods do you accept for the setup fee?",
+    a: "We accept bank transfer and major credit/debit cards. Your account manager will share the exact payment details during your WhatsApp consultation.",
+  },
+  {
+    q: "What documents do I need to provide?",
+    a: "Typically a valid passport or government-issued ID and proof of address, since these are required for the KYC checks of the banks and payment providers involved. Your account manager will confirm the exact list once you've chosen a jurisdiction.",
+  },
+  {
+    q: "What support do I get after the setup is complete?",
+    a: "You keep direct access to your personal account manager after setup is complete — for questions, compliance needs, or if you ever run into an issue with your bank or payment provider down the line.",
+  },
+  {
+    q: "Is this legal and compliant?",
+    a: "Yes. Forming a company and opening a business bank account or payment provider account through a licensed institution is a standard, legal business practice used by companies worldwide. We only work with properly regulated banks and payment providers and follow their KYC/AML requirements throughout the process.",
+  },
 ];
 
 const faqJsonLd = {

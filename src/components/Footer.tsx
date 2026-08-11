@@ -69,6 +69,9 @@ export function Footer() {
               <MessageCircle className="h-4 w-4" />
               WhatsApp Contact
             </a>
+            <p className="mt-4 text-xs text-white/50">
+              +1 (772) 722-8152
+            </p>
           </div>
 
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:col-span-7">
