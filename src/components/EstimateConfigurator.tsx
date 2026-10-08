@@ -59,12 +59,14 @@ function estimateRange(
   priority: Priority,
   hasNominee: boolean
 ): [number, number] {
-  const [baseLow, baseHigh] =
-    jurisdictionId === "hong-kong" && hasNominee
-      ? HONG_KONG_NOMINEE_RANGE
-      : isUnsure
-        ? UNSURE_RANGE
-        : JURISDICTION_RANGES[jurisdictionId] ?? UNSURE_RANGE;
+  // Hong Kong with a nominee always shows the full range, regardless of tier.
+  if (jurisdictionId === "hong-kong" && hasNominee) {
+    return HONG_KONG_NOMINEE_RANGE;
+  }
+
+  const [baseLow, baseHigh] = isUnsure
+    ? UNSURE_RANGE
+    : JURISDICTION_RANGES[jurisdictionId] ?? UNSURE_RANGE;
   const span = baseHigh - baseLow;
 
   let low = baseLow;
