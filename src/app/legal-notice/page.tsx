@@ -5,7 +5,7 @@ import { COMPANY, WHATSAPP_LINK } from "@/lib/config";
 export const metadata: Metadata = {
   title: "Legal Notice",
   description:
-    "Legal notice and company information for B&J Payments, operated by Ben & Jerome Limited, Hong Kong SAR.",
+    "Legal notice and company information for B&J Payments, operated by BJ Limited, Hong Kong SAR.",
   alternates: { canonical: "/legal-notice" },
 };
 

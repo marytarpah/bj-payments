@@ -5,7 +5,7 @@ import { COMPANY, WHATSAPP_LINK } from "@/lib/config";
 export const metadata: Metadata = {
   title: "Terms of Service",
   description:
-    "Terms of Service for B&J Payments, operated by Ben & Jerome Limited, Hong Kong SAR.",
+    "Terms of Service for B&J Payments, operated by BJ Limited, Hong Kong SAR.",
   alternates: { canonical: "/terms-of-service" },
 };
 

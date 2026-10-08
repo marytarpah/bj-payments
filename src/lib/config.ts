@@ -14,7 +14,7 @@ export const WHATSAPP_LINK = buildWhatsAppLink();
 export const SITE_NAME = "B&J Payments";
 
 export const COMPANY = {
-  legalName: "Ben & Jerome Limited",
+  legalName: "BJ Limited",
   tradingAs: "B&J Payments",
   registrationLocation: "Hong Kong SAR",
   legalForm: "Private Limited Company (Companies Ordinance, Cap. 622)",

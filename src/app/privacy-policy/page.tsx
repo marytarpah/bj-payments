@@ -5,7 +5,7 @@ import { COMPANY, WHATSAPP_LINK } from "@/lib/config";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How B&J Payments (Ben & Jerome Limited) collects, uses, and protects your personal data, in line with Hong Kong's Personal Data (Privacy) Ordinance.",
+    "How B&J Payments (BJ Limited) collects, uses, and protects your personal data, in line with Hong Kong's Personal Data (Privacy) Ordinance.",
   alternates: { canonical: "/privacy-policy" },
 };
 
