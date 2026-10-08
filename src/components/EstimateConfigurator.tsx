@@ -53,6 +53,12 @@ const UNSURE_RANGE: [number, number] = [1500, 5000];
 const HONG_KONG_NOMINEE_STANDARD: [number, number] = [4200, 5200];
 const HONG_KONG_NOMINEE_EXPRESS: [number, number] = [4200, 6200];
 
+// US LLC uses fixed ranges per nominee/priority instead of the tier formula.
+const US_RANGES: Record<"plain" | "nominee", Record<Priority, [number, number]>> = {
+  plain: { standard: [1500, 2000], express: [1500, 2500] },
+  nominee: { standard: [4200, 5000], express: [5000, 6200] },
+};
+
 function estimateRange(
   jurisdictionId: string,
   isUnsure: boolean,
@@ -61,6 +67,10 @@ function estimateRange(
   priority: Priority,
   hasNominee: boolean
 ): [number, number] {
+  if (jurisdictionId === "us-llc") {
+    return US_RANGES[hasNominee ? "nominee" : "plain"][priority];
+  }
+
   if (jurisdictionId === "hong-kong" && hasNominee) {
     return priority === "express"
       ? HONG_KONG_NOMINEE_EXPRESS
