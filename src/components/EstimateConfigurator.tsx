@@ -48,16 +48,23 @@ const JURISDICTION_RANGES: Record<string, [number, number]> = {
 // Blended fallback while the visitor hasn't picked a jurisdiction yet.
 const UNSURE_RANGE: [number, number] = [1500, 5000];
 
+// Hong Kong runs higher once a nominee director/shareholder is involved.
+const HONG_KONG_NOMINEE_RANGE: [number, number] = [4250, 6500];
+
 function estimateRange(
   jurisdictionId: string,
   isUnsure: boolean,
   tier: Tier,
   addonsCount: number,
-  priority: Priority
+  priority: Priority,
+  hasNominee: boolean
 ): [number, number] {
-  const [baseLow, baseHigh] = isUnsure
-    ? UNSURE_RANGE
-    : JURISDICTION_RANGES[jurisdictionId] ?? UNSURE_RANGE;
+  const [baseLow, baseHigh] =
+    jurisdictionId === "hong-kong" && hasNominee
+      ? HONG_KONG_NOMINEE_RANGE
+      : isUnsure
+        ? UNSURE_RANGE
+        : JURISDICTION_RANGES[jurisdictionId] ?? UNSURE_RANGE;
   const span = baseHigh - baseLow;
 
   let low = baseLow;
@@ -101,12 +108,14 @@ export function EstimateConfigurator() {
   const addonsCount = addonsIncluded
     ? 0
     : (addons.nominee ? 1 : 0) + (addons.paypalManager ? 1 : 0);
+  const hasNominee = addonsIncluded || addons.nominee;
   const [rangeLow, rangeHigh] = estimateRange(
     jurisdictionId,
     isUnsure,
     tier,
     addonsCount,
-    priority
+    priority,
+    hasNominee
   );
 
   const message = useMemo(() => {
