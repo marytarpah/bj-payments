@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function LegalNoticePage() {
   return (
-    <LegalPage eyebrow="Legal" title="Legal Notice" updated="August 2026">
+    <LegalPage eyebrow="Legal" title="Legal Notice" updated="October 2026">
       <LegalSection title="Company Information">
         <p>This website is operated by:</p>
         <div className="rounded-2xl border border-border-subtle bg-surface p-5">

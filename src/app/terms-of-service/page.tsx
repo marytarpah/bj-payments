@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function TermsOfServicePage() {
   return (
-    <LegalPage eyebrow="Legal" title="Terms of Service" updated="August 2026">
+    <LegalPage eyebrow="Legal" title="Terms of Service" updated="October 2026">
       <LegalSection title="1. Acceptance of Terms">
         <p>
           By using this website or engaging {COMPANY.tradingAs} ({COMPANY.legalName})

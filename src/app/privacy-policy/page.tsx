@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <LegalPage eyebrow="Legal" title="Privacy Policy" updated="August 2026">
+    <LegalPage eyebrow="Legal" title="Privacy Policy" updated="October 2026">
       <LegalSection title="Introduction">
         <p>
           This Privacy Policy explains how {COMPANY.legalName}, trading as{" "}
