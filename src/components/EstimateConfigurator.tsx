@@ -48,8 +48,10 @@ const JURISDICTION_RANGES: Record<string, [number, number]> = {
 // Blended fallback while the visitor hasn't picked a jurisdiction yet.
 const UNSURE_RANGE: [number, number] = [1500, 5000];
 
-// Hong Kong runs higher once a nominee director/shareholder is involved.
-const HONG_KONG_NOMINEE_RANGE: [number, number] = [4250, 6500];
+// Hong Kong runs higher once a nominee director/shareholder is involved:
+// standard processing stays in the lower part, express opens the full range.
+const HONG_KONG_NOMINEE_STANDARD: [number, number] = [4200, 5200];
+const HONG_KONG_NOMINEE_EXPRESS: [number, number] = [4200, 6200];
 
 function estimateRange(
   jurisdictionId: string,
@@ -59,9 +61,10 @@ function estimateRange(
   priority: Priority,
   hasNominee: boolean
 ): [number, number] {
-  // Hong Kong with a nominee always shows the full range, regardless of tier.
   if (jurisdictionId === "hong-kong" && hasNominee) {
-    return HONG_KONG_NOMINEE_RANGE;
+    return priority === "express"
+      ? HONG_KONG_NOMINEE_EXPRESS
+      : HONG_KONG_NOMINEE_STANDARD;
   }
 
   const [baseLow, baseHigh] = isUnsure
