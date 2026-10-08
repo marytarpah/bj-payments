@@ -169,9 +169,6 @@ export function EstimateConfigurator() {
 
   function selectTier(next: Tier) {
     setTier(next);
-    if (next === "Basic" && priority === "express") {
-      setPriority("standard");
-    }
   }
 
   return (
@@ -350,24 +347,17 @@ export function EstimateConfigurator() {
                   </button>
                   <button
                     type="button"
-                    onClick={() => tier === "Premium" && setPriority("express")}
-                    disabled={tier !== "Premium"}
-                    title={tier !== "Premium" ? "Express is only available with the Premium package" : undefined}
+                    onClick={() => setPriority("express")}
                     className={`flex flex-1 items-center gap-2.5 rounded-xl border px-4 py-3 text-left text-sm transition-colors ${
                       priority === "express"
                         ? "border-accent/60 bg-accent/10 text-foreground"
                         : "border-border-subtle text-muted hover:border-white/15"
-                    } ${tier !== "Premium" ? "cursor-not-allowed opacity-50" : ""}`}
+                    }`}
                   >
                     <Zap className="h-4 w-4 shrink-0" />
                     Express processing
                   </button>
                 </div>
-                {tier !== "Premium" && (
-                  <p className="mt-2 text-xs text-muted">
-                    Express processing is only available with the Premium package.
-                  </p>
-                )}
               </div>
 
               {/* budget — only relevant when the visitor doesn't know which setup they need */}
